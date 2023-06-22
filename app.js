@@ -25,21 +25,24 @@ const game=()=>{
                this.style.animation=''; 
             })
         })
-        //computer choice
+        //computer options
         const computerOptions=["rock","paper","scissors"];
+
         options.forEach(option=>{
             option.addEventListener("click",function(){
+                //computer Choice
                 const computerNumber=Math.floor(Math.random()*3);
                 const computerChoise=computerOptions[computerNumber];
                
                 setTimeout(()=>{
+                    //compare hands
                     compareHands(this.textContent,computerChoise);
-               
+                    //update images
                     playerHand.src=`/assets/${this.textContent}.png`;
                     computerHand.src=`/assets/${computerChoise}.png`;
     
                 },2000)
-
+                //animation
                 playerHand.style.animation="shakePlayer 2s ease";
                 computerHand.style.animation="shakeComputer 2s ease";
             })
@@ -57,11 +60,14 @@ const updateScore=()=>{
 
 
 const compareHands=(playerChoice,computerChoise)=>{
-    const winner=document.querySelector('.winner')
+    //update text
+    const winner=document.querySelector('.winner');
+    //Checking for a tie
     if(playerChoice===computerChoise){
         winner.textContent='It is a tie';
         return;
     } 
+    //Checking for Rock
     if(playerChoice==='rock'){
         if(computerChoise==='scissors'){
             winner.textContent='Player wins';
@@ -75,6 +81,7 @@ const compareHands=(playerChoice,computerChoise)=>{
             return;
         }
     }
+    //Checking for Paper
     if(playerChoice==='paper'){
         if(computerChoise==='rock'){
             winner.textContent='Player wins';
@@ -88,6 +95,7 @@ const compareHands=(playerChoice,computerChoise)=>{
             return;
         }
     }
+    //Checking for Scissors
     if(playerChoice==='scissors'){
         if(computerChoise==='paper'){
             winner.textContent='Player wins';
