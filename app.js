@@ -26,17 +26,48 @@ const game=()=>{
             option.addEventListener("click",function(){
                 const computerNumber=Math.floor(Math.random()*3);
                 const computerChoise=computerOptions[computerNumber];
-                console.log(computerChoise);
+               
             })
         })
-      
+};   
+const compareHands=(playerChoice,computerChoise)=>{
+    const winner=document.querySelector('.winner')
+    if(playerChoice===computerChoise){
+        winner.textContent='It is a tie';
+        return;
+    } 
+    if(playerChoice==='rock'){
+        if(computerHand==='scissors'){
+            winner.textContent='Player wins';
+            return;
+        } else{
+            winner.textContent='Computer wins';
+            return;
+        }
+    }
+    if(playerChoice==='paper'){
+        if(computerHand==='rock'){
+            winner.textContent='Player wins';
+            return;
+        } else{
+            winner.textContent='Computer wins';
+            return;
+        }
+    }
+    if(playerChoice==='scissors'){
+        if(computerHand==='paper'){
+            winner.textContent='Player wins';
+            return;
+        } else{
+            winner.textContent='Computer wins';
+            return;
+        }
+    }
+
+}
 
 
-    
-    
 
-
-};    
 startGame();
 playMatch();
 }
