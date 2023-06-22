@@ -31,8 +31,10 @@ const game=()=>{
                 compareHands(this.textContent,computerChoise);
                 updateScore();
 
-                playerHand.src=`/assets/${this.textContent}.png`
-                computerHand.src=`/assets/${computerChoise}.png`
+                playerHand.src=`/assets/${this.textContent}.png`;
+                computerHand.src=`/assets/${computerChoise}.png`;
+                playerHand.style.animation="shakePlayer 2s ease";
+                computerHand.style.animation="shakeComputer 2s ease";
             })
         })
 };   
