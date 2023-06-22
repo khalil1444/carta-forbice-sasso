@@ -20,6 +20,11 @@ const game=()=>{
         const playerHand = document.querySelector(".player-hand");
         const computerHand = document.querySelector(".computer-hand");
         const hands = document.querySelectorAll(".hands img");
+        hands.forEach(hand=>{
+            hand.addEventListener('animationend', function () {
+               this.style.animation=''; 
+            })
+        })
         //computer choice
         const computerOptions=["rock","paper","scissors"];
         options.forEach(option=>{
@@ -27,12 +32,14 @@ const game=()=>{
                 const computerNumber=Math.floor(Math.random()*3);
                 const computerChoise=computerOptions[computerNumber];
                
-                
-                compareHands(this.textContent,computerChoise);
-                updateScore();
+                setTimeout(()=>{
+                    compareHands(this.textContent,computerChoise);
+               
+                    playerHand.src=`/assets/${this.textContent}.png`;
+                    computerHand.src=`/assets/${computerChoise}.png`;
+    
+                },2000)
 
-                playerHand.src=`/assets/${this.textContent}.png`;
-                computerHand.src=`/assets/${computerChoise}.png`;
                 playerHand.style.animation="shakePlayer 2s ease";
                 computerHand.style.animation="shakeComputer 2s ease";
             })
@@ -59,10 +66,12 @@ const compareHands=(playerChoice,computerChoise)=>{
         if(computerChoise==='scissors'){
             winner.textContent='Player wins';
             pScore++;
+            updateScore();
             return;
         } else{
             winner.textContent='Computer wins';
             cScore++;
+            updateScore();
             return;
         }
     }
@@ -70,10 +79,12 @@ const compareHands=(playerChoice,computerChoise)=>{
         if(computerChoise==='rock'){
             winner.textContent='Player wins';
             pScore++;
+            updateScore();
             return;
         } else{
             winner.textContent='Computer wins';
             cScore++;
+            updateScore();
             return;
         }
     }
@@ -81,10 +92,12 @@ const compareHands=(playerChoice,computerChoise)=>{
         if(computerChoise==='paper'){
             winner.textContent='Player wins';
             pScore;
+            updateScore();
             return;
         } else{
             winner.textContent='Computer wins';
             cScore;
+            updateScore();
             return;
         }
     }
