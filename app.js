@@ -27,15 +27,26 @@ const game=()=>{
                 const computerNumber=Math.floor(Math.random()*3);
                 const computerChoise=computerOptions[computerNumber];
                
-
+                
                 compareHands(this.textContent,computerChoise);
-
+                updateScore();
 
                 playerHand.src=`/assets/${this.textContent}.png`
                 computerHand.src=`/assets/${computerChoise}.png`
             })
         })
 };   
+
+
+const updateScore=()=>{
+    const palyerScore=document.querySelector('.player-score p');
+    const computerScore=document.querySelector('.computer-score p');
+    palyerScore.textContent=pScore;
+    computerScore.textContent=cScore;
+};
+
+
+
 const compareHands=(playerChoice,computerChoise)=>{
     const winner=document.querySelector('.winner')
     if(playerChoice===computerChoise){
@@ -45,27 +56,33 @@ const compareHands=(playerChoice,computerChoise)=>{
     if(playerChoice==='rock'){
         if(computerChoise==='scissors'){
             winner.textContent='Player wins';
+            pScore++;
             return;
         } else{
             winner.textContent='Computer wins';
+            cScore++;
             return;
         }
     }
     if(playerChoice==='paper'){
         if(computerChoise==='rock'){
             winner.textContent='Player wins';
+            pScore++;
             return;
         } else{
             winner.textContent='Computer wins';
+            cScore++;
             return;
         }
     }
     if(playerChoice==='scissors'){
         if(computerChoise==='paper'){
             winner.textContent='Player wins';
+            pScore;
             return;
         } else{
             winner.textContent='Computer wins';
+            cScore;
             return;
         }
     }
