@@ -113,7 +113,7 @@ const compareHands=(playerChoice,computerChoise)=>{
 }
 
 
-
+//calling the inner functions after creating them
 startGame();
 playMatch();
 }
