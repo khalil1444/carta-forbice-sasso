@@ -27,6 +27,12 @@ const game=()=>{
                 const computerNumber=Math.floor(Math.random()*3);
                 const computerChoise=computerOptions[computerNumber];
                
+
+                compareHands(this.textContent,computerChoise);
+
+
+                playerHand.src=`/assets/${this.textContent}.png`
+                computerHand.src=`/assets/${computerChoise}.png`
             })
         })
 };   
@@ -37,7 +43,7 @@ const compareHands=(playerChoice,computerChoise)=>{
         return;
     } 
     if(playerChoice==='rock'){
-        if(computerHand==='scissors'){
+        if(computerChoise==='scissors'){
             winner.textContent='Player wins';
             return;
         } else{
@@ -46,7 +52,7 @@ const compareHands=(playerChoice,computerChoise)=>{
         }
     }
     if(playerChoice==='paper'){
-        if(computerHand==='rock'){
+        if(computerChoise==='rock'){
             winner.textContent='Player wins';
             return;
         } else{
@@ -55,7 +61,7 @@ const compareHands=(playerChoice,computerChoise)=>{
         }
     }
     if(playerChoice==='scissors'){
-        if(computerHand==='paper'){
+        if(computerChoise==='paper'){
             winner.textContent='Player wins';
             return;
         } else{
